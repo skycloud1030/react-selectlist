@@ -49,5 +49,5 @@ var config = {
         noParse: [/moment-with-locales/]
     }
 };
-config.addVendor('react-selectlist', __dirname+'/dist/react-selectlist.js');
+// config.addVendor('react-selectlist', __dirname+'/dist/react-selectlist.js');
 module.exports = config;

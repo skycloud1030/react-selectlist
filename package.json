@@ -15,7 +15,8 @@
   },
   "dependencies": {
     "react": "^0.14.2",
-    "react-dom": "^0.14.2"
+    "react-dom": "^0.14.2",
+    "react-selectlist": "^1.0.2"
   },
   "devDependencies": {
     "react-loader": "^2.0.0",
