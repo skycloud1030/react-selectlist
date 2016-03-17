@@ -24,6 +24,88 @@
 
 <p>react-selectlist</p>
 
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install</h2>
+
+<pre><code>npm i --save react-selectlist
+</code></pre>
+
+<h2>
+<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>demo</h2>
+
+<p><a href="http://skycloud1030.github.io/react-selectlist/html/checkbox.html">Live demo</a></p>
+
+<h2>
+<a id="props" class="anchor" href="#props" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>props</h2>
+
+<pre><code>import {ReactSelectList} from 'react-selectlist';
+&lt;ReactSelectList
+  data={data}
+  multiple={multiple}
+  orientation={orientation} onChange={this._onSelectChange}
+/&gt;
+
+</code></pre>
+
+<h3>
+<a id="defaultvalue" class="anchor" href="#defaultvalue" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>defaultValue</h3>
+
+<pre><code>array: [1,2,3]
+
+</code></pre>
+
+<h3>
+<a id="data" class="anchor" href="#data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>data</h3>
+
+<pre><code>data:[
+  { id: 1, name: 'Nuggets'},
+  { id: 2, name: 'Jazz'},
+  { id: 3, name: 'Warriors' },
+  { id: 4, name: 'Lakers' },
+]
+
+or
+
+data:[0,1,2,3,4]
+
+</code></pre>
+
+<h3>
+<a id="valuefield--textfield" class="anchor" href="#valuefield--textfield" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>valueField &amp; textField</h3>
+
+<pre><code>string: default id &amp; name
+
+</code></pre>
+
+<h3>
+<a id="multiple" class="anchor" href="#multiple" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>multiple</h3>
+
+<pre><code>type boolean: true|false
+
+</code></pre>
+
+<h3>
+<a id="orientation" class="anchor" href="#orientation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>orientation</h3>
+
+<pre><code>string :horizontal|vertical
+
+</code></pre>
+
+<h3>
+<a id="onchange" class="anchor" href="#onchange" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>onChange</h3>
+
+<pre><code>call back function
+The select value return in string array
+return (["0","1"],id)
+
+</code></pre>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<pre><code>MIT
+</code></pre>
+
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/skycloud1030/react-selectlist">React-selectlist</a> is maintained by <a href="https://github.com/skycloud1030">skycloud1030</a>.</span>
 
