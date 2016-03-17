@@ -54,7 +54,7 @@ type boolean: true|false
 
 ### orientation
 ```
-type string :horizontal
+string :horizontal|vertical
 
 ```
 
