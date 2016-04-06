@@ -98,9 +98,9 @@ export class ReactSelectList extends React.Component{
       }
     });
     return(
-      <div>
+      <span>
         {row}
-      </div>
+      </span>
     )
   }
 };

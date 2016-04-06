@@ -168,7 +168,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	      });
 	      return React.createElement(
-	        'div',
+	        'span',
 	        null,
 	        row
 	      );
