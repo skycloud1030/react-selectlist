@@ -1,6 +1,6 @@
 {
   "name": "react-selectlist",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "react-selectlist",
   "license": "MIT",
   "main": "dist/react-selectlist.js",
@@ -23,9 +23,9 @@
   "dependencies": {
     "classnames": "^2.2.1",
     "just.randomstring": "^0.1.1",
-    "react": "^0.14.2",
-    "react-addons-shallow-compare": "^0.14.7",
-    "react-dom": "^0.14.2",
+    "react": "^15.0.1",
+    "react-addons-shallow-compare": "^15.0.1",
+    "react-dom": "^15.0.1",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
