@@ -17,14 +17,15 @@ export class ReactSelectList extends React.Component{
   constructor(props) {
     super(props);
     let {defaultValue,id}=this.props;
-    var selected=this._genCheckedList(defaultValue);
+    let l_defaultValue=[...defaultValue];
+    var selected=this._genCheckedList(l_defaultValue);
     if(!id){
       id=randomstring(7)
     }
     this.state={
       id:id,
       selected:selected,
-      defaultValue:this.props.defaultValue.splice(0)
+      defaultValue:l_defaultValue
     }
   }
   shouldComponentUpdate(nextProps, nextState) {
