@@ -13,6 +13,7 @@ export class ReactSelectList extends React.Component{
     valueField:'id',
     textField:'name',
     defaultValue:[],
+    disable:[],
   }
   constructor(props) {
     super(props);
@@ -20,18 +21,18 @@ export class ReactSelectList extends React.Component{
     let l_defaultValue=[...defaultValue];
     var selected=this._genCheckedList(l_defaultValue);
     if(!id){
-      id=randomstring(7)
+      id=randomstring(7);
     }
     this.state={
       id:id,
       selected:selected,
-      defaultValue:l_defaultValue
+      defaultValue:l_defaultValue,
     }
   }
   shouldComponentUpdate(nextProps, nextState) {
     return shallowCompare(this, nextProps, nextState);
   }
-  _genCheckedList=(defaultValue)=>{
+  _genCheckedList = (defaultValue) => {
     let {data,valueField,multiple}=this.props;
     let selected;
     for(var i=0;i<defaultValue.length;i++){
@@ -49,7 +50,7 @@ export class ReactSelectList extends React.Component{
     }
     return selected;
   }
-  _handleChange=(event)=>{
+  _handleChange = (event) => {
     let {multiple}=this.props;
     let {defaultValue,id}=this.state;
     let newValue=event.target.value.toString();
@@ -73,26 +74,40 @@ export class ReactSelectList extends React.Component{
     let {orientation,customStyles,customCss,multiple,valueField,textField}=this.props;
     let {data}=this.props;
     let {id,selected,defaultValue}=this.state;
-
     let selectType=(multiple)?"checkbox":"radio";
+
     let row=data.map((item,index)=>{
       let value=(_.isUndefined(item[valueField]))?item:item[valueField];
-      let text=value;
-      text=(item[textField])?item[textField]:value;
-
+      let text=(item[textField])?item[textField]:value;
 
       if(orientation.toString().toLowerCase()=="horizontal"){
         return (
           <span key={index} style={customStyles} className={customCss}>
-              <input id={"select"+id+index}  checked={selected[index]} name={"select"+id+index} onChange={this._handleChange} type={selectType} value={value}/>
-              <label htmlFor={"select"+id+index}>{text}</label>
+              <input
+                id={`select${id}${index}`}
+                checked={selected[index]}
+                name={`select${id}${index}`}
+                onChange={this._handleChange}
+                type={selectType}
+                value={value}
+                disabled={this.props.disable[index]}
+              />
+              <label htmlFor={`select${id}${index}`}>{text}</label>
           </span>
         );
       }
       else{
         return (
           <div key={index} style={customStyles} className={customCss}>
-              <input id={"select"+id+index} checked={selected[index]} name={"select"+id+index} onChange={this._handleChange} type={selectType} value={value}  />
+              <input
+                id={`select${id}${index}`}
+                checked={selected[index]}
+                name={`select${id}${index}`}
+                onChange={this._handleChange}
+                type={selectType}
+                value={value}
+                disabled={this.props.disable[index]}
+              />
               <label htmlFor={"select"+id+index}>{text}</label>
           </div>
         );

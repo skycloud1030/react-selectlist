@@ -139,21 +139,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var selected = _state.selected;
 	      var defaultValue = _state.defaultValue;
 
-
 	      var selectType = multiple ? "checkbox" : "radio";
+
 	      var row = data.map(function (item, index) {
 	        var value = _.isUndefined(item[valueField]) ? item : item[valueField];
-	        var text = value;
-	        text = item[textField] ? item[textField] : value;
+	        var text = item[textField] ? item[textField] : value;
 
 	        if (orientation.toString().toLowerCase() == "horizontal") {
 	          return React.createElement(
 	            'span',
 	            { key: index, style: customStyles, className: customCss },
-	            React.createElement('input', { id: "select" + id + index, checked: selected[index], name: "select" + id + index, onChange: _this2._handleChange, type: selectType, value: value }),
+	            React.createElement('input', {
+	              id: 'select' + id + index,
+	              checked: selected[index],
+	              name: 'select' + id + index,
+	              onChange: _this2._handleChange,
+	              type: selectType,
+	              value: value,
+	              disabled: _this2.props.disable[index]
+	            }),
 	            React.createElement(
 	              'label',
-	              { htmlFor: "select" + id + index },
+	              { htmlFor: 'select' + id + index },
 	              text
 	            )
 	          );
@@ -161,7 +168,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	          return React.createElement(
 	            'div',
 	            { key: index, style: customStyles, className: customCss },
-	            React.createElement('input', { id: "select" + id + index, checked: selected[index], name: "select" + id + index, onChange: _this2._handleChange, type: selectType, value: value }),
+	            React.createElement('input', {
+	              id: 'select' + id + index,
+	              checked: selected[index],
+	              name: 'select' + id + index,
+	              onChange: _this2._handleChange,
+	              type: selectType,
+	              value: value,
+	              disabled: _this2.props.disable[index]
+	            }),
 	            React.createElement(
 	              'label',
 	              { htmlFor: "select" + id + index },
@@ -187,7 +202,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  orientation: "horizontal",
 	  valueField: 'id',
 	  textField: 'name',
-	  defaultValue: []
+	  defaultValue: [],
+	  disable: []
 	};
 
 	var _initialiseProps = function _initialiseProps() {
