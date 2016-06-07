@@ -29,6 +29,9 @@ class CheckboxDemo extends React.Component{
   _onOrientation=(newSelect,id)=>{
     this.setState({[id]:newSelect});
   }
+  _onChangeDefault= (event)=>{
+    this.setState({selected:event.target.value});
+  }
   render(){
     let {data,selected,multiple,orientation}=this.state;
     return(
@@ -58,6 +61,15 @@ class CheckboxDemo extends React.Component{
             defaultValue={["horizontal"]}
             onChange={this._onOrientation}
           />
+          <br/>
+          <br/>
+          <div>Change default</div>
+          <select value={selected[0]} onChange={this._onChangeDefault}>
+            <option value={1}> Nuggets </option>
+            <option value={2}> Jazz </option>
+            <option value={3}> Warriors </option>
+          </select>
+
 
         </div>
       </div>

@@ -16,7 +16,7 @@
   "dependencies": {
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
-    "react-selectlist": "^1.0.6"
+    "react-selectlist": "^1.0.7"
   },
   "devDependencies": {
     "react-loader": "^2.0.0",

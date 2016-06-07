@@ -84,6 +84,10 @@
 	      _this.setState(_defineProperty({}, id, newSelect));
 	    };
 
+	    _this._onChangeDefault = function (event) {
+	      _this.setState({ selected: event.target.value });
+	    };
+
 	    _this.state = {
 	      data: [{ id: 1, name: 'Nuggets' }, { id: 2, name: 'Jazz' }, { id: 3, name: 'Warriors' }, { id: 4, name: 'Lakers' }],
 	      selected: [1],
@@ -139,7 +143,33 @@
 	            multiple: false,
 	            defaultValue: ["horizontal"],
 	            onChange: this._onOrientation
-	          })
+	          }),
+	          React.createElement('br', null),
+	          React.createElement('br', null),
+	          React.createElement(
+	            'div',
+	            null,
+	            'Change default'
+	          ),
+	          React.createElement(
+	            'select',
+	            { value: selected[0], onChange: this._onChangeDefault },
+	            React.createElement(
+	              'option',
+	              { value: 1 },
+	              ' Nuggets '
+	            ),
+	            React.createElement(
+	              'option',
+	              { value: 2 },
+	              ' Jazz '
+	            ),
+	            React.createElement(
+	              'option',
+	              { value: 3 },
+	              ' Warriors '
+	            )
+	          )
 	        )
 	      );
 	    }
@@ -274,6 +304,15 @@
 		  }
 
 		  _createClass(ReactSelectList, [{
+		    key: 'componentWillReceiveProps',
+		    value: function componentWillReceiveProps(nextProps) {
+		      if (nextProps.defaultValue != this.props.defaultValue) {
+		        var l_defaultValue = [].concat(_toConsumableArray(nextProps.defaultValue));
+		        var selected = this._genCheckedList(l_defaultValue);
+		        this.setState({ selected: selected });
+		      }
+		    }
+		  }, {
 		    key: 'shouldComponentUpdate',
 		    value: function shouldComponentUpdate(nextProps, nextState) {
 		      return shallowCompare(this, nextProps, nextState);
