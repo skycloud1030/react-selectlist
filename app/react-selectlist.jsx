@@ -29,6 +29,13 @@ export class ReactSelectList extends React.Component{
       defaultValue:l_defaultValue,
     }
   }
+  componentWillReceiveProps(nextProps){
+    if(nextProps.defaultValue!=this.props.defaultValue){
+      let l_defaultValue=[...nextProps.defaultValue];
+      var selected=this._genCheckedList(l_defaultValue);
+      this.setState({selected:selected});
+    }
+  }
   shouldComponentUpdate(nextProps, nextState) {
     return shallowCompare(this, nextProps, nextState);
   }

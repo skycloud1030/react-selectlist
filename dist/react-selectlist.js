@@ -117,6 +117,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 
 	  _createClass(ReactSelectList, [{
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      if (nextProps.defaultValue != this.props.defaultValue) {
+	        var l_defaultValue = [].concat(_toConsumableArray(nextProps.defaultValue));
+	        var selected = this._genCheckedList(l_defaultValue);
+	        this.setState({ selected: selected });
+	      }
+	    }
+	  }, {
 	    key: 'shouldComponentUpdate',
 	    value: function shouldComponentUpdate(nextProps, nextState) {
 	      return shallowCompare(this, nextProps, nextState);
