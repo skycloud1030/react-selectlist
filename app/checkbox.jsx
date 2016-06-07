@@ -33,13 +33,31 @@ class CheckboxDemo extends React.Component{
     let {data,selected,multiple,orientation}=this.state;
     return(
       <div>
-        <ReactSelectList data={data} defaultValue={selected} multiple={multiple} orientation={orientation} onChange={this._onSelectChange}/>
+        <ReactSelectList
+          data={data}
+          disable={[true,true]}
+          defaultValue={selected}
+          multiple={multiple}
+          orientation={orientation}
+          onChange={this._onSelectChange}
+        />
         <div>The selected value: {selected}</div>
 
         <div style={{marginTop:15}}>
           <div>Options</div>
-          <ReactSelectList id="multiple" data={[{id:"true",name:"Mutiple"},{id:"false",name:"Single"}]} multiple={false} defaultValue={["true"]} onChange={this._onMultiple}/>
-          <ReactSelectList id="orientation" data={[{id:"vertical",name:"Vertical"},{id:"horizontal",name:"Horizontal"}]} multiple={false} defaultValue={["horizontal"]} onChange={this._onOrientation}/>
+          <ReactSelectList id="multiple"
+            data={[{id:"true",name:"Mutiple"},{id:"false",name:"Single"}]}
+            multiple={false}
+            defaultValue={["true"]}
+            onChange={this._onMultiple}
+          />
+          <ReactSelectList
+            id="orientation"
+            data={[{id:"vertical",name:"Vertical"},{id:"horizontal",name:"Horizontal"}]}
+            multiple={false}
+            defaultValue={["horizontal"]}
+            onChange={this._onOrientation}
+          />
 
         </div>
       </div>

@@ -14,9 +14,9 @@
     "min": "webpack --min"
   },
   "dependencies": {
-    "react": "^15.0.1",
-    "react-dom": "^15.0.1",
-    "react-selectlist": "^1.0.5"
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-selectlist": "^1.0.6"
   },
   "devDependencies": {
     "react-loader": "^2.0.0",
