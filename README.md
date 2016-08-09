@@ -28,10 +28,10 @@ array: [1,2,3]
 ### data
 ```
 data:[
-  { id: 1, name: 'Nuggets'},
-  { id: 2, name: 'Jazz'},
-  { id: 3, name: 'Warriors' },
-  { id: 4, name: 'Lakers' },
+  { value: 1, label: 'Nuggets'},
+  { value: 2, label: 'Jazz'},
+  { value: 3, label: 'Warriors' },
+  { value: 4, label: 'Lakers' },
 ]
 
 or
@@ -42,7 +42,7 @@ data:[0,1,2,3,4]
 
 ### valueField & textField
 ```
-string: default id & name
+string: default value & label
 
 ```
 
