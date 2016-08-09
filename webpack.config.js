@@ -2,12 +2,9 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var node_modules_dir = __dirname + '/node_modules';
-
 var min= process.argv.indexOf("--min")===-1?false:true;
-var plugins=
-[
-  new webpack.ProvidePlugin({ $: 'jquery', jQuery: 'jquery', 'window.jQuery': 'jquery', 'root.jQuery': 'jquery' }),
-];
+var plugins=[];
+
 if(min){
   plugins.push(new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }))
 }
