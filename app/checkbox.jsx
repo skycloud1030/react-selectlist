@@ -8,26 +8,26 @@ class CheckboxDemo extends React.Component{
     super(props);
     this.state={
       data:[
-        { id: 1, name: 'Nuggets'},
-        { id: 2, name: 'Jazz'},
-        { id: 3, name: 'Warriors' },
-        { id: 4, name: 'Lakers' },
+        { value: 1, label: 'Nuggets'},
+        { value: 2, label: 'Jazz'},
+        { value: 3, label: 'Warriors' },
+        { value: 4, label: 'Lakers' },
       ],
       selected:[1],
       multiple:true,
       orientation:"horizontal",
     }
   }
-  _onSelectChange=(newSelect)=>{
+  _onSelectChange= (newSelect)=>{
     this.setState({selected:newSelect});
   }
-  _onMultiple=(newSelect,id)=>{
+  _onMultiple= (newSelect)=>{
     let state;
     state=(newSelect=="true")?true:false;
-    this.setState({[id]:state});
+    this.setState({multiple:state});
   }
-  _onOrientation=(newSelect,id)=>{
-    this.setState({[id]:newSelect});
+  _onOrientation= (newSelect)=>{
+    this.setState({orientation:newSelect});
   }
   _onChangeDefault= (event)=>{
     this.setState({selected:event.target.value});
@@ -38,8 +38,8 @@ class CheckboxDemo extends React.Component{
       <div>
         <ReactSelectList
           data={data}
-          disable={[true,true]}
-          defaultValue={selected}
+          disabled={[true,true]}
+          value={selected}
           multiple={multiple}
           orientation={orientation}
           onChange={this._onSelectChange}
@@ -48,17 +48,16 @@ class CheckboxDemo extends React.Component{
 
         <div style={{marginTop:15}}>
           <div>Options</div>
-          <ReactSelectList id="multiple"
-            data={[{id:"true",name:"Mutiple"},{id:"false",name:"Single"}]}
+          <ReactSelectList
+            data={[{value:true,label:"Mutiple"},{value:false,label:"Single"}]}
             multiple={false}
-            defaultValue={["true"]}
+            value={multiple}
             onChange={this._onMultiple}
           />
           <ReactSelectList
-            id="orientation"
-            data={[{id:"vertical",name:"Vertical"},{id:"horizontal",name:"Horizontal"}]}
+            data={[{value:"vertical",label:"Vertical"},{value:"horizontal",label:"Horizontal"}]}
             multiple={false}
-            defaultValue={["horizontal"]}
+            value={orientation}
             onChange={this._onOrientation}
           />
           <br/>

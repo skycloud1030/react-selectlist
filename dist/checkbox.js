@@ -50,8 +50,6 @@
 
 	var _reactSelectlist = __webpack_require__(1);
 
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -74,14 +72,14 @@
 	      _this.setState({ selected: newSelect });
 	    };
 
-	    _this._onMultiple = function (newSelect, id) {
+	    _this._onMultiple = function (newSelect) {
 	      var state = void 0;
 	      state = newSelect == "true" ? true : false;
-	      _this.setState(_defineProperty({}, id, state));
+	      _this.setState({ multiple: state });
 	    };
 
-	    _this._onOrientation = function (newSelect, id) {
-	      _this.setState(_defineProperty({}, id, newSelect));
+	    _this._onOrientation = function (newSelect) {
+	      _this.setState({ orientation: newSelect });
 	    };
 
 	    _this._onChangeDefault = function (event) {
@@ -89,7 +87,7 @@
 	    };
 
 	    _this.state = {
-	      data: [{ id: 1, name: 'Nuggets' }, { id: 2, name: 'Jazz' }, { id: 3, name: 'Warriors' }, { id: 4, name: 'Lakers' }],
+	      data: [{ value: 1, label: 'Nuggets' }, { value: 2, label: 'Jazz' }, { value: 3, label: 'Warriors' }, { value: 4, label: 'Lakers' }],
 	      selected: [1],
 	      multiple: true,
 	      orientation: "horizontal"
@@ -111,8 +109,8 @@
 	        null,
 	        React.createElement(_reactSelectlist.ReactSelectList, {
 	          data: data,
-	          disable: [true, true],
-	          defaultValue: selected,
+	          disabled: [true, true],
+	          value: selected,
 	          multiple: multiple,
 	          orientation: orientation,
 	          onChange: this._onSelectChange
@@ -131,17 +129,16 @@
 	            null,
 	            'Options'
 	          ),
-	          React.createElement(_reactSelectlist.ReactSelectList, { id: 'multiple',
-	            data: [{ id: "true", name: "Mutiple" }, { id: "false", name: "Single" }],
+	          React.createElement(_reactSelectlist.ReactSelectList, {
+	            data: [{ value: true, label: "Mutiple" }, { value: false, label: "Single" }],
 	            multiple: false,
-	            defaultValue: ["true"],
+	            value: multiple,
 	            onChange: this._onMultiple
 	          }),
 	          React.createElement(_reactSelectlist.ReactSelectList, {
-	            id: 'orientation',
-	            data: [{ id: "vertical", name: "Vertical" }, { id: "horizontal", name: "Horizontal" }],
+	            data: [{ value: "vertical", label: "Vertical" }, { value: "horizontal", label: "Horizontal" }],
 	            multiple: false,
-	            defaultValue: ["horizontal"],
+	            value: orientation,
 	            onChange: this._onOrientation
 	          }),
 	          React.createElement('br', null),
@@ -187,14 +184,14 @@
 
 	(function webpackUniversalModuleDefinition(root, factory) {
 		if(true)
-			module.exports = factory(__webpack_require__(2), __webpack_require__(39));
+			module.exports = factory(__webpack_require__(2));
 		else if(typeof define === 'function' && define.amd)
-			define("ReactSelectlist", ["react", "react-dom"], factory);
+			define("ReactSelectlist", ["react"], factory);
 		else if(typeof exports === 'object')
-			exports["ReactSelectlist"] = factory(require("react"), require("react-dom"));
+			exports["ReactSelectlist"] = factory(require("react"));
 		else
-			root["ReactSelectlist"] = factory(root["react"], root["react-dom"]);
-	})(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__) {
+			root["ReactSelectlist"] = factory(root["react"]);
+	})(this, function(__WEBPACK_EXTERNAL_MODULE_2__) {
 	return /******/ (function(modules) { // webpackBootstrap
 	/******/ 	// The module cache
 	/******/ 	var installedModules = {};
@@ -258,23 +255,32 @@
 		Object.defineProperty(exports, "__esModule", {
 		  value: true
 		});
+		exports.ReactSelectList = undefined;
+
+		var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 		var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-		function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+		var _react = __webpack_require__(2);
+
+		var _react2 = _interopRequireDefault(_react);
+
+		var _just = __webpack_require__(3);
+
+		var _just2 = _interopRequireDefault(_just);
+
+		var _underscore = __webpack_require__(4);
+
+		var _underscore2 = _interopRequireDefault(_underscore);
+
+		function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 		function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 		function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-		function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+		function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* react-selectlist.jsx*/
 
-		/* react-selectlist.jsx*/
-		var React = __webpack_require__(2);
-		var ReactDOM = __webpack_require__(3);
-		var randomstring = __webpack_require__(4);
-		var shallowCompare = __webpack_require__(5);
-		var _ = __webpack_require__(8);
 
 		var ReactSelectList = exports.ReactSelectList = function (_React$Component) {
 		  _inherits(ReactSelectList, _React$Component);
@@ -286,102 +292,59 @@
 
 		    _initialiseProps.call(_this);
 
-		    var _this$props = _this.props;
-		    var defaultValue = _this$props.defaultValue;
-		    var id = _this$props.id;
-
-		    var l_defaultValue = [].concat(_toConsumableArray(defaultValue));
-		    var selected = _this._genCheckedList(l_defaultValue);
-		    if (!id) {
-		      id = randomstring(7);
-		    }
-		    _this.state = {
-		      id: id,
-		      selected: selected,
-		      defaultValue: l_defaultValue
-		    };
+		    _this.data = _this.props.data;
+		    _this._getDefaultSet(_this.props);
+		    _this.state = _extends({}, _this.props, { id: (0, _just2.default)(7) });
 		    return _this;
 		  }
 
 		  _createClass(ReactSelectList, [{
 		    key: 'componentWillReceiveProps',
 		    value: function componentWillReceiveProps(nextProps) {
-		      if (nextProps.defaultValue != this.props.defaultValue) {
-		        var l_defaultValue = [].concat(_toConsumableArray(nextProps.defaultValue));
-		        var selected = this._genCheckedList(l_defaultValue);
-		        this.setState({ selected: selected });
+		      if (nextProps.multiple != this.props.multiple) {
+		        this._getDefaultSet(nextProps);
 		      }
-		    }
-		  }, {
-		    key: 'shouldComponentUpdate',
-		    value: function shouldComponentUpdate(nextProps, nextState) {
-		      return shallowCompare(this, nextProps, nextState);
 		    }
 		  }, {
 		    key: 'render',
 		    value: function render() {
 		      var _this2 = this;
 
-		      var _props = this.props;
-		      var orientation = _props.orientation;
-		      var customStyles = _props.customStyles;
-		      var customCss = _props.customCss;
-		      var multiple = _props.multiple;
-		      var valueField = _props.valueField;
-		      var textField = _props.textField;
-		      var data = this.props.data;
 		      var _state = this.state;
+		      var data = _state.data;
+		      var textField = _state.textField;
+		      var valueField = _state.valueField;
 		      var id = _state.id;
-		      var selected = _state.selected;
-		      var defaultValue = _state.defaultValue;
+		      var _props = this.props;
+		      var disabled = _props.disabled;
+		      var multiple = _props.multiple;
+		      var orientation = _props.orientation;
 
 		      var selectType = multiple ? "checkbox" : "radio";
+		      var style = orientation == "horizontal" ? { display: "inline-block" } : { display: "block" };
+		      style = _extends({}, this.props.style, style);
 
 		      var row = data.map(function (item, index) {
-		        var value = _.isUndefined(item[valueField]) ? item : item[valueField];
-		        var text = item[textField] ? item[textField] : value;
-
-		        if (orientation.toString().toLowerCase() == "horizontal") {
-		          return React.createElement(
-		            'span',
-		            { key: index, style: customStyles, className: customCss },
-		            React.createElement('input', {
-		              id: 'select' + id + index,
-		              checked: selected[index],
-		              name: 'select' + id + index,
-		              onChange: _this2._handleChange,
-		              type: selectType,
-		              value: value,
-		              disabled: _this2.props.disable[index]
-		            }),
-		            React.createElement(
-		              'label',
-		              { htmlFor: 'select' + id + index },
-		              text
-		            )
-		          );
-		        } else {
-		          return React.createElement(
-		            'div',
-		            { key: index, style: customStyles, className: customCss },
-		            React.createElement('input', {
-		              id: 'select' + id + index,
-		              checked: selected[index],
-		              name: 'select' + id + index,
-		              onChange: _this2._handleChange,
-		              type: selectType,
-		              value: value,
-		              disabled: _this2.props.disable[index]
-		            }),
-		            React.createElement(
-		              'label',
-		              { htmlFor: "select" + id + index },
-		              text
-		            )
-		          );
-		        }
+		        return _react2.default.createElement(
+		          'span',
+		          { key: index, style: style },
+		          _react2.default.createElement('input', {
+		            id: id + '_' + index,
+		            checked: item["checked"],
+		            name: id + '_' + index,
+		            onChange: _this2._handleChange.bind(_this2, index),
+		            type: selectType,
+		            value: item[valueField],
+		            disabled: disabled[index]
+		          }),
+		          _react2.default.createElement(
+		            'label',
+		            { htmlFor: id + '_' + index },
+		            item[textField]
+		          )
+		        );
 		      });
-		      return React.createElement(
+		      return _react2.default.createElement(
 		        'span',
 		        null,
 		        row
@@ -390,64 +353,106 @@
 		  }]);
 
 		  return ReactSelectList;
-		}(React.Component);
+		}(_react2.default.Component);
 
 		ReactSelectList.defaultProps = {
 		  data: [],
-		  multiple: true,
 		  orientation: "horizontal",
-		  valueField: 'id',
-		  textField: 'name',
-		  defaultValue: [],
-		  disable: []
+		  valueField: "value",
+		  textField: "label",
+		  multiple: false,
+		  value: "",
+		  disabled: []
 		};
 
 		var _initialiseProps = function _initialiseProps() {
 		  var _this3 = this;
 
-		  this._genCheckedList = function (defaultValue) {
-		    var _props2 = _this3.props;
-		    var data = _props2.data;
-		    var valueField = _props2.valueField;
-		    var multiple = _props2.multiple;
+		  this._getDefaultSet = function (props) {
+		    var valueField = props.valueField;
+		    var value = props.value;
+		    var multiple = props.multiple;
 
-		    var selected = void 0;
-		    for (var i = 0; i < defaultValue.length; i++) {
-		      defaultValue[i] = defaultValue[i].toString();
+		    if (multiple) {
+		      _this3.data.map(function (item, index) {
+		        if (typeof value == "string") {
+		          if (item[valueField] == value) {
+		            item.checked = true;
+		          } else {
+		            item.checked = false;
+		          }
+		        } else {
+		          if (value.includes(item[valueField])) {
+		            item.checked = true;
+		          } else {
+		            item.checked = false;
+		          }
+		        }
+		      });
+		    } else {
+		      if (_underscore2.default.isArray(value)) {
+		        value = _underscore2.default.last(value);
+		      }
+		      _this3.data.map(function (item, index) {
+		        if (item[valueField] == value) {
+		          item.checked = true;
+		        } else {
+		          item.checked = false;
+		        }
+		      });
 		    }
-		    if (!multiple) {
-		      defaultValue = [_.last(defaultValue)];
-		    }
-		    selected = data.map(function (item, index) {
-		      var value = _.isUndefined(item[valueField]) ? item : item[valueField];
-		      return _.contains(defaultValue, value.toString());
-		    });
-		    if (!selected) {
-		      selected = [true];
-		    }
-		    return selected;
 		  };
 
-		  this._handleChange = function (event) {
-		    var multiple = _this3.props.multiple;
-		    var _state2 = _this3.state;
-		    var defaultValue = _state2.defaultValue;
-		    var id = _state2.id;
+		  this._getCheck = function () {
+		    var _props2 = _this3.props;
+		    var multiple = _props2.multiple;
+		    var valueField = _props2.valueField;
+		    var data = _this3.state.data;
 
-		    var newValue = event.target.value.toString();
-		    if (!multiple) {
-		      defaultValue = [];
-		    }
-		    if (event.target.checked) {
-		      defaultValue.push(newValue);
+
+		    var checked = void 0;
+		    if (multiple) {
+		      checked = data.filter(function (item) {
+		        return item.checked;
+		      }).map(function (item) {
+		        return item[valueField];
+		      });
+		      return checked;
 		    } else {
-		      defaultValue = _.without(defaultValue, newValue);
+		      return _this3.newValue;
 		    }
-		    var selected = _this3._genCheckedList(defaultValue);
-		    if (typeof _this3.props.onChange == "function") {
-		      _this3.props.onChange(defaultValue, id);
+		  };
+
+		  this._handleChange = function (index, event) {
+		    _this3.newValue = event.target.value.toString();
+		    var data = _this3._genCheckedList(index);
+		    _this3.setState({ data: data });
+		    //if need onChange option
+		    if (typeof _this3.props.onChange != "undefined") {
+		      _this3.props.onChange(_this3._getCheck());
 		    }
-		    _this3.setState({ selected: selected, defaultValue: defaultValue });
+		  };
+
+		  this._genCheckedList = function (selectedIndex) {
+		    var multiple = _this3.props.multiple;
+
+		    if (multiple) {
+		      // mutiple checked
+		      var data = _this3.data;
+		      if (_underscore2.default.isUndefined(data[selectedIndex].checked)) {
+		        data[selectedIndex].checked = true;
+		      } else {
+		        data[selectedIndex].checked = !data[selectedIndex].checked;
+		      }
+		      return data;
+		    } else {
+		      //single checked
+		      var _data = _this3.data.map(function (item, index) {
+		        item.checked = index == selectedIndex ? true : false;
+		        return item;
+		      });
+		      return _data;
+		    }
 		  };
 		};
 
@@ -461,12 +466,6 @@
 
 	/***/ },
 	/* 3 */
-	/***/ function(module, exports) {
-
-		module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
-
-	/***/ },
-	/* 4 */
 	/***/ function(module, exports) {
 
 		/**
@@ -556,113 +555,7 @@
 		}
 
 	/***/ },
-	/* 5 */
-	/***/ function(module, exports, __webpack_require__) {
-
-		module.exports = __webpack_require__(6);
-
-	/***/ },
-	/* 6 */
-	/***/ function(module, exports, __webpack_require__) {
-
-		/**
-		 * Copyright 2013-present, Facebook, Inc.
-		 * All rights reserved.
-		 *
-		 * This source code is licensed under the BSD-style license found in the
-		 * LICENSE file in the root directory of this source tree. An additional grant
-		 * of patent rights can be found in the PATENTS file in the same directory.
-		 *
-		* @providesModule shallowCompare
-		*/
-
-		'use strict';
-
-		var shallowEqual = __webpack_require__(7);
-
-		/**
-		 * Does a shallow comparison for props and state.
-		 * See ReactComponentWithPureRenderMixin
-		 */
-		function shallowCompare(instance, nextProps, nextState) {
-		  return !shallowEqual(instance.props, nextProps) || !shallowEqual(instance.state, nextState);
-		}
-
-		module.exports = shallowCompare;
-
-	/***/ },
-	/* 7 */
-	/***/ function(module, exports) {
-
-		/**
-		 * Copyright (c) 2013-present, Facebook, Inc.
-		 * All rights reserved.
-		 *
-		 * This source code is licensed under the BSD-style license found in the
-		 * LICENSE file in the root directory of this source tree. An additional grant
-		 * of patent rights can be found in the PATENTS file in the same directory.
-		 *
-		 * @typechecks
-		 * 
-		 */
-
-		/*eslint-disable no-self-compare */
-
-		'use strict';
-
-		var hasOwnProperty = Object.prototype.hasOwnProperty;
-
-		/**
-		 * inlined Object.is polyfill to avoid requiring consumers ship their own
-		 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
-		 */
-		function is(x, y) {
-		  // SameValue algorithm
-		  if (x === y) {
-		    // Steps 1-5, 7-10
-		    // Steps 6.b-6.e: +0 != -0
-		    return x !== 0 || 1 / x === 1 / y;
-		  } else {
-		    // Step 6.a: NaN == NaN
-		    return x !== x && y !== y;
-		  }
-		}
-
-		/**
-		 * Performs equality by iterating through keys on an object and returning false
-		 * when any key has values which are not strictly equal between the arguments.
-		 * Returns true when the values of all keys are strictly equal.
-		 */
-		function shallowEqual(objA, objB) {
-		  if (is(objA, objB)) {
-		    return true;
-		  }
-
-		  if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
-		    return false;
-		  }
-
-		  var keysA = Object.keys(objA);
-		  var keysB = Object.keys(objB);
-
-		  if (keysA.length !== keysB.length) {
-		    return false;
-		  }
-
-		  // Test for A's keys different from B.
-		  for (var i = 0; i < keysA.length; i++) {
-		    if (!hasOwnProperty.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
-		      return false;
-		    }
-		  }
-
-		  return true;
-		}
-
-		module.exports = shallowEqual;
-
-	/***/ },
-	/* 8 */
+	/* 4 */
 	/***/ function(module, exports, __webpack_require__) {
 
 		var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscore.js 1.8.3
