@@ -109,6 +109,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _initialiseProps.call(_this);
 
 	    _this.data = _this.props.data;
+	    _this.value = _this.props.value;
 	    _this._getDefaultSet(_this.props);
 	    _this.state = _extends({}, _this.props, { id: (0, _just2.default)(7) });
 	    return _this;
@@ -235,12 +236,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	      return checked;
 	    } else {
-	      return _this3.newValue;
+	      return _this3.value;
 	    }
 	  };
 
 	  this._handleChange = function (index, event) {
-	    _this3.newValue = event.target.value.toString();
+	    _this3.value = event.target.value.toString();
 	    var data = _this3._genCheckedList(index);
 	    _this3.setState({ data: data });
 	    //if need onChange option

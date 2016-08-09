@@ -16,6 +16,7 @@ export class ReactSelectList extends React.Component{
   constructor(props) {
       super(props);
       this.data=this.props.data;
+      this.value=this.props.value;
       this._getDefaultSet(this.props);
       this.state={...this.props,id:randomstring(7)};
   }
@@ -75,11 +76,11 @@ export class ReactSelectList extends React.Component{
       return checked;
     }
     else{
-      return this.newValue;
+      return this.value;
     }
   }
   _handleChange= (index,event)=>{
-    this.newValue=event.target.value.toString();
+    this.value=event.target.value.toString();
     let data=this._genCheckedList(index);
     this.setState({data});
     //if need onChange option
