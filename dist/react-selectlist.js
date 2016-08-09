@@ -192,14 +192,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    if (multiple) {
 	      _this3.data.map(function (item, index) {
-	        if (typeof value == "string") {
-	          if (item[valueField] == value) {
+	        if (_underscore2.default.isArray(value)) {
+	          if (value.includes(item[valueField])) {
 	            item.checked = true;
 	          } else {
 	            item.checked = false;
 	          }
 	        } else {
-	          if (value.includes(item[valueField])) {
+	          if (item[valueField] == value) {
 	            item.checked = true;
 	          } else {
 	            item.checked = false;
