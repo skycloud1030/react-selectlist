@@ -118,9 +118,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _createClass(ReactSelectList, [{
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
-	      if (nextProps.multiple != this.props.multiple) {
-	        this._getDefaultSet(nextProps);
-	      }
+	      this.data = nextProps.data;
+	      this.value = nextProps.value;
+	      this.setState({ data: this.data });
+	      this._getDefaultSet(nextProps);
 	    }
 	  }, {
 	    key: 'render',

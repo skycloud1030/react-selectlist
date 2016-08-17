@@ -21,9 +21,10 @@ export class ReactSelectList extends React.Component{
       this.state={...this.props,id:randomstring(7)};
   }
   componentWillReceiveProps(nextProps){
-    if(nextProps.multiple!=this.props.multiple){
-      this._getDefaultSet(nextProps);
-    }
+    this.data= nextProps.data;
+    this.value= nextProps.value;
+    this.setState({data:this.data});
+    this._getDefaultSet(nextProps);
   }
   _getDefaultSet = (props)=>{
     let {valueField,value,multiple}=props;
