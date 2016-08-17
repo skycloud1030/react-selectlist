@@ -22,14 +22,15 @@ export class ReactSelectList extends React.Component{
   }
   componentWillReceiveProps(nextProps){
     this.data= nextProps.data;
-    if(this.props.data!=nextProps.data){
+    if(this.props.data!=nextProps.data || this.props.mutiple!=nextProps.mutiple){
       this.value= nextProps.value;
+      this._getDefaultSet(nextProps);
     }
     this.setState({data:this.data});
-    this._getDefaultSet(nextProps);
   }
   _getDefaultSet = (props)=>{
-    let {valueField,value,multiple}=props;
+    let {valueField,multiple}=props;
+    let value =this.value;
     if(multiple){
       this.data.map((item,index)=>{
         if(_.isArray(value)){

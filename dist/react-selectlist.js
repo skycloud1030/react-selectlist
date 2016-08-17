@@ -119,11 +119,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
 	      this.data = nextProps.data;
-	      if (this.props.data != nextProps.data) {
+	      if (this.props.data != nextProps.data || this.props.mutiple != nextProps.mutiple) {
 	        this.value = nextProps.value;
+	        this._getDefaultSet(nextProps);
 	      }
 	      this.setState({ data: this.data });
-	      this._getDefaultSet(nextProps);
 	    }
 	  }, {
 	    key: 'render',
@@ -190,9 +190,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  this._getDefaultSet = function (props) {
 	    var valueField = props.valueField;
-	    var value = props.value;
 	    var multiple = props.multiple;
 
+	    var value = _this3.value;
 	    if (multiple) {
 	      _this3.data.map(function (item, index) {
 	        if (_underscore2.default.isArray(value)) {
