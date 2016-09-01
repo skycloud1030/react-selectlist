@@ -293,6 +293,7 @@
 		    _initialiseProps.call(_this);
 
 		    _this.data = _this.props.data;
+		    _this.value = _this.props.value;
 		    _this._getDefaultSet(_this.props);
 		    _this.state = _extends({}, _this.props, { id: (0, _just2.default)(7) });
 		    return _this;
@@ -301,9 +302,12 @@
 		  _createClass(ReactSelectList, [{
 		    key: 'componentWillReceiveProps',
 		    value: function componentWillReceiveProps(nextProps) {
-		      if (nextProps.multiple != this.props.multiple) {
+		      this.data = nextProps.data;
+		      if (this.props.data != nextProps.data || this.props.mutiple != nextProps.mutiple) {
+		        this.value = nextProps.value;
 		        this._getDefaultSet(nextProps);
 		      }
+		      this.setState({ data: this.data });
 		    }
 		  }, {
 		    key: 'render',
@@ -370,19 +374,19 @@
 
 		  this._getDefaultSet = function (props) {
 		    var valueField = props.valueField;
-		    var value = props.value;
 		    var multiple = props.multiple;
 
+		    var value = _this3.value;
 		    if (multiple) {
 		      _this3.data.map(function (item, index) {
-		        if (typeof value == "string") {
-		          if (item[valueField] == value) {
+		        if (_underscore2.default.isArray(value)) {
+		          if (_underscore2.default.contains(item[valueField], value)) {
 		            item.checked = true;
 		          } else {
 		            item.checked = false;
 		          }
 		        } else {
-		          if (value.includes(item[valueField])) {
+		          if (item[valueField] == value) {
 		            item.checked = true;
 		          } else {
 		            item.checked = false;
@@ -419,12 +423,12 @@
 		      });
 		      return checked;
 		    } else {
-		      return _this3.newValue;
+		      return _this3.value;
 		    }
 		  };
 
 		  this._handleChange = function (index, event) {
-		    _this3.newValue = event.target.value.toString();
+		    _this3.value = event.target.value.toString();
 		    var data = _this3._genCheckedList(index);
 		    _this3.setState({ data: data });
 		    //if need onChange option
