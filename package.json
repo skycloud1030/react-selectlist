@@ -1,6 +1,6 @@
 {
   "name": "react-selectlist",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "react-selectlist",
   "license": "MIT",
   "main": "dist/react-selectlist.js",
