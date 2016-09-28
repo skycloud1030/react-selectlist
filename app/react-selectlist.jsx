@@ -34,7 +34,7 @@ export class ReactSelectList extends React.Component{
     if(multiple){
       this.data.map((item,index)=>{
         if(_.isArray(value)){
-          if(_.contains(item[valueField],value)){
+          if(_.contains(value,item[valueField])){
             item.checked=true;
           }
           else{
