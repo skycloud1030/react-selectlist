@@ -21,11 +21,7 @@ import {ReactSelectList} from 'react-selectlist';
 
 ```
 
-### defaultValue
-```
-array: [1,2,3]
 
-```
 ### data
 ```
 data:[
@@ -38,6 +34,12 @@ data:[
 or
 
 data:[0,1,2,3,4]
+
+```
+
+### value
+```
+array: [1,2,3]
 
 ```
 
