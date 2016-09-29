@@ -14,18 +14,16 @@ export class ReactSelectList extends React.Component{
     disabled:[],
   }
   constructor(props) {
-      super(props);
-      this.data=this.props.data;
-      this.value=this.props.value;
-      this._getDefaultSet(this.props);
-      this.state={...this.props,id:randomstring(7)};
+    super(props);
+    this.data=this.props.data;
+    this.value=this.props.value;
+    this._getDefaultSet(this.props);
+    this.state={...this.props,id:randomstring(7)};
   }
   componentWillReceiveProps(nextProps){
     this.data= nextProps.data;
-    if(this.props.data!=nextProps.data || this.props.mutiple!=nextProps.mutiple){
-      this.value= nextProps.value;
-      this._getDefaultSet(nextProps);
-    }
+    this.value= nextProps.value;
+    this._getDefaultSet(nextProps);
     this.setState({data:this.data});
   }
   _getDefaultSet = (props)=>{

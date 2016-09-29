@@ -119,10 +119,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
 	      this.data = nextProps.data;
-	      if (this.props.data != nextProps.data || this.props.mutiple != nextProps.mutiple) {
-	        this.value = nextProps.value;
-	        this._getDefaultSet(nextProps);
-	      }
+	      this.value = nextProps.value;
+	      this._getDefaultSet(nextProps);
 	      this.setState({ data: this.data });
 	    }
 	  }, {
