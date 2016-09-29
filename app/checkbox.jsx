@@ -67,6 +67,7 @@ class CheckboxDemo extends React.Component{
             <option value={1}> Nuggets </option>
             <option value={2}> Jazz </option>
             <option value={3}> Warriors </option>
+            <option value={4}> Lakers </option>
           </select>
 
 

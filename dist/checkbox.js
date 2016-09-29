@@ -165,6 +165,11 @@
 	              'option',
 	              { value: 3 },
 	              ' Warriors '
+	            ),
+	            React.createElement(
+	              'option',
+	              { value: 4 },
+	              ' Lakers '
 	            )
 	          )
 	        )
@@ -303,10 +308,8 @@
 		    key: 'componentWillReceiveProps',
 		    value: function componentWillReceiveProps(nextProps) {
 		      this.data = nextProps.data;
-		      if (this.props.data != nextProps.data || this.props.mutiple != nextProps.mutiple) {
-		        this.value = nextProps.value;
-		        this._getDefaultSet(nextProps);
-		      }
+		      this.value = nextProps.value;
+		      this._getDefaultSet(nextProps);
 		      this.setState({ data: this.data });
 		    }
 		  }, {
@@ -380,7 +383,7 @@
 		    if (multiple) {
 		      _this3.data.map(function (item, index) {
 		        if (_underscore2.default.isArray(value)) {
-		          if (_underscore2.default.contains(item[valueField], value)) {
+		          if (_underscore2.default.contains(value, item[valueField])) {
 		            item.checked = true;
 		          } else {
 		            item.checked = false;
