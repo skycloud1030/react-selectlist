@@ -15,8 +15,11 @@ npm i --save react-selectlist
 import {ReactSelectList} from 'react-selectlist';
 <ReactSelectList
   data={data}
+  disabled={[true,true]}
+  value={selected}
   multiple={multiple}
-  orientation={orientation} onChange={this._onSelectChange}
+  orientation={orientation}
+  onChange={this._onSelectChange}
 />
 
 ```
