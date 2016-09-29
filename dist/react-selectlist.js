@@ -196,7 +196,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (multiple) {
 	      _this3.data.map(function (item, index) {
 	        if (_underscore2.default.isArray(value)) {
-	          if (_underscore2.default.contains(item[valueField], value)) {
+	          if (_underscore2.default.contains(value, item[valueField])) {
 	            item.checked = true;
 	          } else {
 	            item.checked = false;
