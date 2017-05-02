@@ -37,6 +37,7 @@ class CheckboxDemo extends React.Component{
     return(
       <div>
         <ReactSelectList
+          className={"MySelect"}
           data={data}
           disabled={[true,true]}
           value={selected}
