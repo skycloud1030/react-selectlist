@@ -12,6 +12,7 @@ export class ReactSelectList extends React.Component{
     multiple:false,
     value:"",
     disabled:[],
+    onChange:()=>{}
   }
   constructor(props) {
     super(props);
@@ -85,10 +86,7 @@ export class ReactSelectList extends React.Component{
     this.value=event.target.value.toString();
     let data=this._genCheckedList(index);
     this.setState({data});
-    //if need onChange option
-    if(typeof this.props.onChange!="undefined"){
-      this.props.onChange(this._getCheck());
-    }
+    this.props.onChange(this._getCheck());
   }
   _genCheckedList= (selectedIndex)=>{
       let {multiple}=this.props;
@@ -115,6 +113,7 @@ export class ReactSelectList extends React.Component{
   render() {
       let {data,textField,valueField,id}=this.state;
       let {disabled,multiple,orientation}=this.props;
+      let {className}=this.props;
       let selectType=(multiple)?"checkbox":"radio";
       let style= (orientation=="horizontal")?{display:"inline-block"}:{display:"block"};
       style={...this.props.style,...style};
@@ -136,7 +135,7 @@ export class ReactSelectList extends React.Component{
         )
       });
       return (
-        <span>
+        <span className={className}>
           {row}
         </span>
       )

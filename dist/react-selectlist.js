@@ -152,6 +152,7 @@ var ReactSelectList = exports.ReactSelectList = function (_React$Component) {
           disabled = _props.disabled,
           multiple = _props.multiple,
           orientation = _props.orientation;
+      var className = this.props.className;
 
       var selectType = multiple ? "checkbox" : "radio";
       var style = orientation == "horizontal" ? { display: "inline-block" } : { display: "block" };
@@ -179,7 +180,7 @@ var ReactSelectList = exports.ReactSelectList = function (_React$Component) {
       });
       return _react2.default.createElement(
         'span',
-        null,
+        { className: className },
         row
       );
     }
@@ -195,7 +196,8 @@ ReactSelectList.defaultProps = {
   textField: "label",
   multiple: false,
   value: "",
-  disabled: []
+  disabled: [],
+  onChange: function onChange() {}
 };
 
 var _initialiseProps = function _initialiseProps() {
@@ -260,10 +262,7 @@ var _initialiseProps = function _initialiseProps() {
     _this3.value = event.target.value.toString();
     var data = _this3._genCheckedList(index);
     _this3.setState({ data: data });
-    //if need onChange option
-    if (typeof _this3.props.onChange != "undefined") {
-      _this3.props.onChange(_this3._getCheck());
-    }
+    _this3.props.onChange(_this3._getCheck());
   };
 
   this._genCheckedList = function (selectedIndex) {
