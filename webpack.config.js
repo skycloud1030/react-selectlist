@@ -33,7 +33,7 @@ var config = {
             loader: 'babel-loader', // 'babel-loader' is also a legal name to reference
             query: {
               cacheDirectory:true,
-              presets: ['es2015', 'stage-0', 'react']
+              presets: ['env', 'stage-0', 'react']
             }
           },
           {
