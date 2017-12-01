@@ -32,7 +32,7 @@ var config = {
             exclude: /(node_modules|bower_components)/,
             loader: 'babel', // 'babel-loader' is also a legal name to reference
             query: {
-              presets: ['es2015', 'stage-0', 'react'],
+              presets: ['env', 'stage-0', 'react'],
             }
           },
           {
@@ -49,5 +49,4 @@ var config = {
         noParse: [/moment-with-locales/]
     }
 };
-// config.addVendor('react-selectlist', __dirname+'/dist/react-selectlist.js');
 module.exports = config;

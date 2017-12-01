@@ -1,45 +1,48 @@
 /* react-selectlist.jsx*/
 var React = require('react');
 var ReactDOM = require('react-dom');
-import {ReactSelectList} from 'react-selectlist';
+import { ReactSelectList } from 'react-selectlist';
 
-class CheckboxDemo extends React.Component{
+class CheckboxDemo extends React.Component {
   constructor(props) {
     super(props);
-    this.state={
-      data:[
-        { value: 1, label: 'Nuggets'},
-        { value: 2, label: 'Jazz'},
+    this.state = {
+      data: [
+        { value: 1, label: 'Nuggets' },
+        { value: 2, label: 'Jazz' },
         { value: 3, label: 'Warriors' },
         { value: 4, label: 'Lakers' },
       ],
-      selected:[1],
-      multiple:true,
-      orientation:"horizontal",
+      selected: [1],
+      multiple: true,
+      orientation: "horizontal",
+      optionA: [{ value: true, label: "Mutiple" }, { value: false, label: "Single" }],
+      optionB: [{ value: "vertical", label: "Vertical" }, { value: "horizontal", label: "Horizontal" }]
     }
   }
-  _onSelectChange= (newSelect)=>{
-    this.setState({selected:newSelect});
+  _onSelectChange = (newSelect) => {
+    this.setState({ selected: newSelect });
   }
-  _onMultiple= (newSelect)=>{
+  _onMultiple = (newSelect) => {
     let state;
-    state=(newSelect=="true")?true:false;
-    this.setState({multiple:state});
+    state = (newSelect == "true") ? true : false;
+    this.setState({ multiple: state });
   }
-  _onOrientation= (newSelect)=>{
-    this.setState({orientation:newSelect});
+  _onOrientation = (newSelect) => {
+    this.setState({ orientation: newSelect });
   }
-  _onChangeDefault= (event)=>{
-    this.setState({selected:event.target.value});
+  _onChangeDefault = (event) => {
+    this.setState({ selected: event.target.value });
   }
-  render(){
-    let {data,selected,multiple,orientation}=this.state;
-    return(
+  render() {
+    const { data, selected, multiple, orientation } = this.state;
+    const { optionA, optionB } = this.state;
+    return (
       <div>
         <ReactSelectList
           className={"MySelect"}
           data={data}
-          disabled={[true,true]}
+          disabled={[true, true]}
           value={selected}
           multiple={multiple}
           orientation={orientation}
@@ -47,22 +50,22 @@ class CheckboxDemo extends React.Component{
         />
         <div>The selected value: {selected}</div>
 
-        <div style={{marginTop:15}}>
+        <div style={{ marginTop: 15 }}>
           <div>Options</div>
           <ReactSelectList
-            data={[{value:true,label:"Mutiple"},{value:false,label:"Single"}]}
+            data={optionA}
             multiple={false}
             value={multiple}
             onChange={this._onMultiple}
           />
           <ReactSelectList
-            data={[{value:"vertical",label:"Vertical"},{value:"horizontal",label:"Horizontal"}]}
+            data={optionB}
             multiple={false}
             value={orientation}
             onChange={this._onOrientation}
           />
-          <br/>
-          <br/>
+          <br />
+          <br />
           <div>Change default</div>
           <select value={selected[0]} onChange={this._onChangeDefault}>
             <option value={1}> Nuggets </option>
@@ -70,14 +73,12 @@ class CheckboxDemo extends React.Component{
             <option value={3}> Warriors </option>
             <option value={4}> Lakers </option>
           </select>
-
-
         </div>
       </div>
     )
   }
 };
 ReactDOM.render(
-  <CheckboxDemo/>,
+  <CheckboxDemo />,
   document.getElementById('demo')
 );
