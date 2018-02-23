@@ -1,8 +1,7 @@
-/* react-selectlist.jsx*/
-var React = require('react');
-var ReactDOM = require('react-dom');
+import React from "react";
+import ReactDOM from "react-dom";
 import { ReactSelectList } from 'react-selectlist';
-
+/* react-selectlist.jsx*/
 class CheckboxDemo extends React.Component {
   constructor(props) {
     super(props);
@@ -38,7 +37,7 @@ class CheckboxDemo extends React.Component {
     const { data, selected, multiple, orientation } = this.state;
     const { optionA, optionB } = this.state;
     return (
-      <div>
+      <React.Fragment>
         <ReactSelectList
           className={"MySelect"}
           data={data}
@@ -48,8 +47,7 @@ class CheckboxDemo extends React.Component {
           orientation={orientation}
           onChange={this._onSelectChange}
         />
-        <div>The selected value: {selected}</div>
-
+        <div>The selected value: {selected.toString()}</div>
         <div style={{ marginTop: 15 }}>
           <div>Options</div>
           <ReactSelectList
@@ -74,7 +72,7 @@ class CheckboxDemo extends React.Component {
             <option value={4}> Lakers </option>
           </select>
         </div>
-      </div>
+      </React.Fragment>
     )
   }
 };

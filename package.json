@@ -14,22 +14,22 @@
     "min": "webpack --min"
   },
   "dependencies": {
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-selectlist": "^1.3.0"
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-selectlist": "^2.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
-    "babel-loader": "^6.4.1",
+    "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "css-loader": "^0.22.0",
-    "extract-text-webpack-plugin": "^0.9.1",
+    "css-loader": "^0.28.10",
+    "extract-text-webpack-plugin": "^3.0.2",
     "react-loader": "^2.4.0",
-    "file-loader": "^0.8.4",
-    "style-loader": "^0.13.2",
-    "url-loader": "^0.5.8",
-    "webpack": "^1.15.0"
+    "file-loader": "^1.1.9",
+    "style-loader": "^0.20.2",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.11.0"
   }
 }
