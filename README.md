@@ -1,5 +1,9 @@
 # react-selectlist
-react-selectlist
+[![Travis](https://api.travis-ci.org/skycloud1030/react-selectlist.svg?branch=master)](https://travis-ci.org/skycloud1030/react-selectlist)
+[![Coverage Status](https://coveralls.io/repos/github/skycloud1030/react-selectlist/badge.svg?branch=master)](https://coveralls.io/github/skycloud1030/react-selectlist?branch=master)
+[![Version](https://img.shields.io/npm/v/react-selectlist.svg)](https://www.npmjs.com/package/react-selectlist)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
+[![Donloads](https://img.shields.io/npm/dm/react-selectlist.svg)](https://www.npmjs.com/package/react-selectlist)
 
 ## Install
 ```sh
@@ -26,7 +30,7 @@ import {ReactSelectList} from 'react-selectlist';
 
 
 ### data
-```json
+```sh
 data:[
   { value: 1, label: 'Nuggets'},
   { value: 2, label: 'Jazz'},
@@ -41,31 +45,31 @@ data:[0,1,2,3,4]
 ```
 
 ### value
-```js
+```sh
 array: [1,2,3]
 
 ```
 
 ### valueField & textField
-```js
+```sh
 string: default value & label
 
 ```
 
 ### multiple
-```js
+```sh
 type boolean: true|false
 
 ```
 
 ### orientation
-```js
+```sh
 string :horizontal|vertical
 
 ```
 
 ### onChange
-```js
+```sh
 call back function
 The select value return in string array
 return (["0","1"],id)
