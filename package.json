@@ -1,15 +1,11 @@
 {
   "name": "react-selectlist",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "react-selectlist",
   "license": "MIT",
   "main": "dist/react-selectlist.js",
-  "keywords": [
-    "react",
-    "radio",
-    "checkbox",
-    "react-component"
-  ],
+  "keywords": ["react", "radio", "checkbox", "react-component"],
+  "files": ["dist"],
   "author": "skycloud1030",
   "repository": {
     "type": "git",
@@ -18,11 +14,9 @@
   "scripts": {
     "start": "webpack --progress --colors --watch",
     "build": "webpack",
-    "min": "webpack --min"
+    "test": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
-    "classnames": "^2.2.5",
-    "just.randomstring": "^0.1.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
@@ -33,10 +27,15 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.0",
-    "file-loader": "^0.11.1",
+    "file-loader": "^1.1.9",
     "react-loader": "^2.4.2",
-    "style-loader": "^0.16.1",
-    "url-loader": "^0.5.8",
-    "webpack": "^2.4.1"
+    "style-loader": "^0.20.2",
+    "url-loader": "^0.6.2",
+    "coveralls": "^3.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^22.1.4",
+    "react-test-render": "^1.1.1",
+    "webpack": "^3.11.0"
   }
 }
