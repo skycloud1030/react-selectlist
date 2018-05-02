@@ -21,7 +21,7 @@ var config = {
   plugins: plugins,
   resolve: { alias: {} },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js[x]?$/,
         exclude: /(node_modules|bower_components)/,
