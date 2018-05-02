@@ -9,27 +9,27 @@
     "url": "https://github.com/skycloud1030/react-selectlist"
   },
   "scripts": {
-    "start": "webpack --progress --colors --watch",
-    "build": "webpack",
-    "min": "webpack --min"
+    "start": "webpack --progress --colors --watch --mode development",
+    "build": "webpack --mode production --progress --color"
   },
   "dependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-selectlist": "^2.0.0"
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-selectlist": "^2.0.1"
   },
   "devDependencies": {
-    "babel-core": "^6.24.1",
-    "babel-loader": "^7.1.2",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "css-loader": "^0.28.10",
+    "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "^3.0.2",
-    "react-loader": "^2.4.0",
-    "file-loader": "^1.1.9",
-    "style-loader": "^0.20.2",
-    "url-loader": "^0.6.2",
-    "webpack": "^3.11.0"
+    "react-loader": "^2.4.5",
+    "file-loader": "^1.1.11",
+    "style-loader": "^0.21.0",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.1.2"
   }
 }

@@ -3,20 +3,6 @@ const webpack = require("webpack");
 const node_modules_dir = __dirname + "/node_modules";
 var plugins = [];
 
-function webpackfunction(env) {
-  plugins.push(
-    new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("production")
-    })
-  );
-  if (env && env.prod) {
-    plugins.push(
-      new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
-    );
-  }
-  return config;
-}
-
 var config = {
   entry: {
     checkbox: path.resolve(__dirname, "app/checkbox.jsx")
@@ -28,7 +14,7 @@ var config = {
   plugins: plugins,
   resolve: { alias: {} },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js[x]?$/,
         exclude: /(node_modules|bower_components)/,
@@ -69,4 +55,4 @@ var config = {
     noParse: [/moment-with-locales/]
   }
 };
-module.exports = webpackfunction;
+module.exports = config;
