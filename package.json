@@ -1,7 +1,7 @@
 {
   "name": "react-selectlist",
-  "version": "2.0.1",
-  "description": "react-selectlist",
+  "version": "2.0.2",
+  "description": "React component used for selecting multiple values or single statess from several options",
   "license": "MIT",
   "main": "dist/react-selectlist.js",
   "keywords": [
@@ -37,12 +37,12 @@
     "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",
     "react-loader": "^2.4.5",
-    "style-loader": "^0.20.2",
+    "style-loader": "^0.21.0",
     "url-loader": "^1.0.1",
     "coveralls": "^3.0.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "jest": "^22.1.4",
+    "jest": "^22.4.3",
     "webpack": "^4.6.0",
     "webpack-cli": "^2.1.2"
   }
