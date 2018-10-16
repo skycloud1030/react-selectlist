@@ -15,7 +15,7 @@ var config = {
     umdNamedDefine: true
   },
   externals: {
-    "react": "react",
+    react: "react",
     "react-dom": "react-dom"
   },
   plugins: plugins,
@@ -28,7 +28,7 @@ var config = {
         loader: "babel-loader", // 'babel-loader' is also a legal name to reference
         query: {
           cacheDirectory: true,
-          presets: ["env", "stage-0", "react"]
+          presets: ["@babel/preset-env", "@babel/preset-react"]
         }
       },
       {
@@ -50,13 +50,11 @@ var config = {
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader:
-          "url-loader?name=[path][name].[ext]&limit=50000&mimetype=application/octet-stream"
+        loader: "url-loader?name=[path][name].[ext]&limit=50000&mimetype=application/octet-stream"
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader:
-          "url-loader?name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml"
+        loader: "url-loader?name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml"
       }
     ]
   }

@@ -32,37 +32,30 @@ export class ReactSelectList extends React.PureComponent {
   _getDefaultSet = props => {
     const { valueField, multiple } = props;
     let value = this.value;
-    if (multiple) {
-      this.data.map(item => {
-        if (_.isArray(value)) {
-          item.checked = value.includes(item[valueField]) ? true : false;
-        } else {
-          item.checked = item[valueField] == value ? true : false;
-        }
-      });
-    } else {
-      if (_.isArray(value)) {
+
+    switch (true) {
+      case multiple && _.isArray(value):
+        this.data.map(item => (item.checked = value.includes(item[valueField]) ? true : false));
+        break;
+      case multiple:
+        this.data.map(item => (item.checked = item[valueField] == value ? true : false));
+        break;
+      case _.isArray(value):
         value = _.last(value);
-      }
-      this.data.map(item => {
-        item.checked = item[valueField] == value ? true : false;
-      });
+        break;
+      default:
+        this.data.map(item => (item.checked = item[valueField] == value ? true : false));
+        break;
     }
   };
   _getCheck = () => {
     const { multiple, valueField } = this.props;
     const { data } = this.state;
-    if (multiple) {
-      const checked = data
-        .filter(item => {
-          return item.checked;
-        })
-        .map(item => {
-          return item[valueField];
-        });
-      return checked;
-    } else {
-      return this.value;
+    switch (true) {
+      case multiple:
+        return data.filter(item => item.checked).map(item => item[valueField]);
+      default:
+        return this.value;
     }
   };
   _handleChange = (index, event) => {
@@ -73,27 +66,22 @@ export class ReactSelectList extends React.PureComponent {
   };
   _genCheckedList = selectedIndex => {
     let { multiple } = this.props;
-    const data = this.data;
+    const data = this.data || [];
     if (multiple) {
       // mutiple checked
       data[selectedIndex].checked = !data[selectedIndex].checked;
     } else {
       //single checked
-      data.map(item => {
-        item.checked = false;
-      });
+      data.map(item => (item.checked = false));
       data[selectedIndex].checked = true;
     }
     return data;
   };
   _createBox = () => {
     const { data, textField, valueField, id } = this.state;
-    const { disabled, multiple, orientation, className } = this.props;
+    const { disabled, multiple, orientation } = this.props;
     const selectType = multiple ? "checkbox" : "radio";
-    let style =
-      orientation === "horizontal"
-        ? { display: "inline-block" }
-        : { display: "block" };
+    let style = orientation === "horizontal" ? { display: "inline-block" } : { display: "block" };
     style = { ...this.props.style, ...style };
 
     const row = data.map((item, index) => {
