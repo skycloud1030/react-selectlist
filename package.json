@@ -1,6 +1,6 @@
 {
   "name": "react-selectlist",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "React component used for selecting multiple values or single statess from several options",
   "license": "MIT",
   "main": "dist/react-selectlist.js",
