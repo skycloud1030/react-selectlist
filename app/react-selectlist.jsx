@@ -66,7 +66,7 @@ export class ReactSelectList extends React.PureComponent {
   };
   _genCheckedList = selectedIndex => {
     let { multiple } = this.props;
-    const data = this.data || [];
+    const data = this.data;
     if (multiple) {
       // mutiple checked
       data[selectedIndex].checked = !data[selectedIndex].checked;
