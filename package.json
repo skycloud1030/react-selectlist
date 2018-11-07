@@ -1,6 +1,6 @@
 {
   "name": "react-selectlist",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "React component used for selecting multiple values or single statess from several options",
   "license": "MIT",
   "main": "dist/react-selectlist.js",
@@ -25,11 +25,11 @@
     "jest": "jest --coverage"
   },
   "dependencies": {
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0"
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
+    "@babel/core": "^7.1.5",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/plugin-proposal-decorators": "^7.0.0",
     "@babel/plugin-proposal-do-expressions": "^7.0.0",
@@ -46,12 +46,12 @@
     "@babel/plugin-proposal-throw-expressions": "^7.0.0",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-syntax-import-meta": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-env": "^7.1.5",
     "@babel/preset-react": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-loader": "^8.0.0",
     "coveralls": "^3.0.2",
-    "css-loader": "^1.0.0",
+    "css-loader": "^1.0.1",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "file-loader": "^2.0.0",
@@ -59,7 +59,7 @@
     "react-loader": "^2.4.5",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
-    "webpack": "^4.23.0",
+    "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2"
   }
 }
