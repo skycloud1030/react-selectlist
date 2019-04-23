@@ -13,8 +13,8 @@
     "build": "webpack --mode production --progress --color"
   },
   "dependencies": {
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-selectlist": "git+https://github.com/skycloud1030/react-selectlist.git"
   },
   "devDependencies": {

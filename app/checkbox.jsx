@@ -1,45 +1,44 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { ReactSelectList } from 'react-selectlist';
+import ReactSelectList from "react-selectlist";
+import "./checkbox.css";
 /* react-selectlist.jsx*/
 class CheckboxDemo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [
-        { value: 1, label: 'Nuggets' },
-        { value: 2, label: 'Jazz' },
-        { value: 3, label: 'Warriors' },
-        { value: 4, label: 'Lakers' },
+        { value: 1, label: "Nuggets" },
+        { value: 2, label: "Jazz" },
+        { value: 3, label: "Warriors" },
+        { value: 4, label: "Lakers" }
       ],
       selected: [1],
       multiple: true,
       orientation: "horizontal",
       optionA: [{ value: true, label: "Mutiple" }, { value: false, label: "Single" }],
       optionB: [{ value: "vertical", label: "Vertical" }, { value: "horizontal", label: "Horizontal" }]
-    }
+    };
   }
-  _onSelectChange = (newSelect) => {
+  _onSelectChange = newSelect => {
     this.setState({ selected: newSelect });
-  }
-  _onMultiple = (newSelect) => {
-    let state;
-    state = (newSelect == "true") ? true : false;
-    this.setState({ multiple: state });
-  }
-  _onOrientation = (newSelect) => {
+  };
+  _onMultiple = newSelect => {
+    this.setState({ multiple: newSelect });
+  };
+  _onOrientation = newSelect => {
     this.setState({ orientation: newSelect });
-  }
-  _onChangeDefault = (event) => {
+  };
+  _onChangeDefault = event => {
     this.setState({ selected: event.target.value });
-  }
+  };
   render() {
     const { data, selected, multiple, orientation } = this.state;
     const { optionA, optionB } = this.state;
     return (
       <React.Fragment>
         <ReactSelectList
-          className={"MySelect"}
+          className={"rc-selectlist"}
           data={data}
           disabled={[true, true]}
           value={selected}
@@ -50,12 +49,7 @@ class CheckboxDemo extends React.Component {
         <div>The selected value: {selected.toString()}</div>
         <div style={{ marginTop: 15 }}>
           <div>Options</div>
-          <ReactSelectList
-            data={optionA}
-            multiple={false}
-            value={multiple}
-            onChange={this._onMultiple}
-          />
+          <ReactSelectList data={optionA} multiple={false} value={multiple} onChange={this._onMultiple} />
           <ReactSelectList
             data={optionB}
             multiple={false}
@@ -73,10 +67,7 @@ class CheckboxDemo extends React.Component {
           </select>
         </div>
       </React.Fragment>
-    )
+    );
   }
-};
-ReactDOM.render(
-  <CheckboxDemo />,
-  document.getElementById('demo')
-);
+}
+ReactDOM.render(<CheckboxDemo />, document.getElementById("demo"));

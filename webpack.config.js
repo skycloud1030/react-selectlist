@@ -11,6 +11,10 @@ var config = {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js"
   },
+  externals: {
+    react: "React",
+    "react-dom": "ReactDOM"
+  },
   plugins: plugins,
   resolve: { alias: {} },
   module: {
@@ -43,13 +47,11 @@ var config = {
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader:
-          "url-loader?name=[path][name].[ext]&limit=50000&mimetype=application/octet-stream"
+        loader: "url-loader?name=[path][name].[ext]&limit=50000&mimetype=application/octet-stream"
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader:
-          "url-loader?name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml"
+        loader: "url-loader?name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml"
       }
     ],
     noParse: [/moment-with-locales/]
