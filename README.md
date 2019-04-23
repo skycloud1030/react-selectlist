@@ -16,12 +16,12 @@ npm i --save react-selectlist
 
 ## demo
 
-[Live demo](http://skycloud1030.github.io/react-selectlist/html/checkbox.html)
+[Live demo](https://skycloud1030.github.io/react-selectlist/html/checkbox.html)
 
 ## props
 
 ```js
-import { ReactSelectList } from "react-selectlist";
+import ReactSelectList from "react-selectlist";
 <ReactSelectList
   data={data}
   disabled={[true, true]}

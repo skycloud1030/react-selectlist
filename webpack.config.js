@@ -5,7 +5,7 @@ var plugins = [];
 
 var config = {
   entry: {
-    "react-selectlist": path.resolve(__dirname, "index.js")
+    "index": path.resolve(__dirname, "index.js")
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -25,7 +25,7 @@ var config = {
       {
         test: /\.js[x]?$/,
         exclude: /(node_modules|bower_components)/,
-        loader: "babel-loader", // 'babel-loader' is also a legal name to reference
+        loader: "babel-loader",
         query: {
           cacheDirectory: true,
           presets: ["@babel/preset-env", "@babel/preset-react"]

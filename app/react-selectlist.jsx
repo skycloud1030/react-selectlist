@@ -1,89 +1,66 @@
-import React from "react";
+import React, { useMemo, useState, useEffect, useCallback } from "react";
 import * as _ from "./math.js";
-import shallowEqual from "fbjs/lib/shallowEqual";
 
 /* react-selectlist.jsx*/
-export class ReactSelectList extends React.PureComponent {
-  static defaultProps = {
-    data: [],
-    orientation: "horizontal",
-    valueField: "value",
-    textField: "label",
-    multiple: false,
-    value: "",
-    disabled: [],
-    onChange: () => {}
-  };
-  constructor(props) {
-    super(props);
-    this.data = this.props.data;
-    this.value = this.props.value;
-    this._getDefaultSet(this.props);
-    this.state = { ...this.props, id: _.radomString() };
-  }
-  componentWillReceiveProps(nextProps) {
-    if (!shallowEqual(this.props, nextProps)) {
-      this.data = nextProps.data;
-      this.value = nextProps.value;
-      this._getDefaultSet(nextProps);
-      this.setState({ data: this.data });
-    }
-  }
-  _getDefaultSet = props => {
-    const { valueField, multiple } = props;
-    let value = this.value;
+function RcSelect(props) {
+  const { className, style } = props;
+  const { disabled = [], multiple = true, orientation = "horizontal" } = props;
+  const { textField = "label", valueField = "value" } = props;
+  const [id] = useState(() => _.radomString());
+  const [data, setData] = useState([]);
+  const { onChange = () => {} } = props;
 
+  const handleChange = useCallback(
+    selectedIndex => {
+      let newData = [];
+      let value;
+      const _getCheck = data => {
+        switch (true) {
+          case multiple:
+            return data.filter(item => item.checked).map(item => item[valueField]);
+          default:
+            return value;
+        }
+      };
+      switch (multiple) {
+        case true:
+          newData = [...data];
+          newData[selectedIndex].checked = !newData[selectedIndex].checked;
+          break;
+        default:
+          newData = data.map(item => ({ ...item, checked: false }));
+          newData[selectedIndex].checked = true;
+          value = newData[selectedIndex][valueField];
+          break;
+      }
+      onChange(_getCheck(newData));
+    },
+    [multiple, data]
+  );
+
+  useEffect(() => {
+    let data = [];
+    let value = props.value;
     switch (true) {
       case multiple && _.isArray(value):
-        this.data.map(item => (item.checked = value.includes(item[valueField]) ? true : false));
+        data = props.data.map(item => ({ ...item, checked: value.includes(item[valueField]) }));
         break;
       case multiple:
-        this.data.map(item => (item.checked = item[valueField] == value ? true : false));
+        data = props.data.map(item => ({ ...item, checked: item[valueField] == value }));
         break;
       case _.isArray(value):
         value = _.last(value);
-        break;
       default:
-        this.data.map(item => (item.checked = item[valueField] == value ? true : false));
+        data = props.data.map(item => ({ ...item, checked: item[valueField] == value }));
         break;
     }
-  };
-  _getCheck = () => {
-    const { multiple, valueField } = this.props;
-    const { data } = this.state;
-    switch (true) {
-      case multiple:
-        return data.filter(item => item.checked).map(item => item[valueField]);
-      default:
-        return this.value;
-    }
-  };
-  _handleChange = (index, event) => {
-    this.value = event.target.value.toString();
-    const data = this._genCheckedList(index);
-    this.setState({ data });
-    this.props.onChange(this._getCheck());
-  };
-  _genCheckedList = selectedIndex => {
-    let { multiple } = this.props;
-    const data = this.data;
-    if (multiple) {
-      // mutiple checked
-      data[selectedIndex].checked = !data[selectedIndex].checked;
-    } else {
-      //single checked
-      data.map(item => (item.checked = false));
-      data[selectedIndex].checked = true;
-    }
-    return data;
-  };
-  _createBox = () => {
-    const { data, textField, valueField, id } = this.state;
-    const { disabled, multiple, orientation } = this.props;
+    setData(data);
+  }, [props.data, multiple, props.value]);
+
+  const _createBox = useMemo(() => {
     const selectType = multiple ? "checkbox" : "radio";
     let style = orientation === "horizontal" ? { display: "inline-block" } : { display: "block" };
-    style = { ...this.props.style, ...style };
-
+    style = { ...props.style, ...style };
     const row = data.map((item, index) => {
       return (
         <span key={index} style={style}>
@@ -91,8 +68,8 @@ export class ReactSelectList extends React.PureComponent {
             id={`${id}_${index}`}
             checked={item["checked"]}
             name={`${id}_${index}`}
-            onChange={this._handleChange.bind(this, index)}
             type={selectType}
+            onChange={handleChange.bind(this, index)}
             value={item[valueField]}
             disabled={disabled[index]}
           />
@@ -101,13 +78,13 @@ export class ReactSelectList extends React.PureComponent {
       );
     });
     return row;
-  };
-  render() {
-    const { className, style } = this.props;
-    return (
-      <span className={className} style={style}>
-        {this._createBox()}
-      </span>
-    );
-  }
+  }, [disabled, multiple, orientation, data]);
+
+  return (
+    <span className={className} style={style}>
+      {_createBox}
+    </span>
+  );
 }
+
+export default React.memo(RcSelect);

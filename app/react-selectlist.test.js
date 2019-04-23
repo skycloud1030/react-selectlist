@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { ReactSelectList } from "../index.js";
+import ReactSelectList from "../index.js";
 import { last } from "./math.js";
 
 const tests = {
@@ -35,24 +35,21 @@ describe("React_Bootstrap_Carousel", () => {
       onChange={_onSelectChange.bind(this)}
     />
   );
-  const test_componet2 = mount(
-    <ReactSelectList data={tests2.data} multiple={true} value={[1, 2]}/>
-  );
+  const test_componet2 = mount(<ReactSelectList data={tests2.data} value={[1, 2]} />);
 
   it("Should change value", () => {
-    // const checkbox_val = test_componet.find('input[type="checkbox"][value="3"]');
     test_componet.setProps({ value: [3] });
     const checkbox_val = test_componet.find('input[type="checkbox"]');
-    expect(checkbox_val.get(2).props.checked).toBe(true);
-    expect(checkbox_val.get(0).props.checked && checkbox_val.get(1).props.checked).toBe(false);
+    expect(checkbox_val.at(2).instance().checked).toBe(true);
+    expect(checkbox_val.at(0).instance().checked && checkbox_val.at(1).instance().checked).toBe(false);
     test_componet.setProps({ multiple: false, value: [1, 3] });
     const checkbox_val2 = test_componet.find('input[type="radio"]');
-    expect(checkbox_val2.get(2).props.checked).toBe(true);
-    expect(checkbox_val2.get(0).props.checked).toBe(false);
+    expect(checkbox_val2.at(2).instance().checked).toBe(true);
+    expect(checkbox_val2.at(0).instance().checked).toBe(false);
     test_componet.setProps({ value: 2 });
     const checkbox_val3 = test_componet.find('input[type="radio"]');
-    expect(checkbox_val3.get(1).props.checked).toBe(true);
-    expect(checkbox_val3.get(2).props.checked).toBe(false);
+    expect(checkbox_val3.at(1).instance().checked).toBe(true);
+    expect(checkbox_val3.at(2).instance().checked).toBe(false);
   });
   it("Should change verticle & horizontal", () => {
     const horizontal = test_componet.find("span[style]").get(0).props.style.display;
@@ -77,7 +74,7 @@ describe("React_Bootstrap_Carousel", () => {
     test_componet.setProps({ multiple: false, value: 1 });
     const check_list2 = test_componet.find("input[type='radio']");
     check_list2.at(2).simulate("change");
-    expect(select_val).toBe("3");
+    expect(select_val).toBe(3);
     const check_list3 = test_componet2.find("input[type='checkbox']");
     check_list3.at(0).simulate("change");
     test_componet2.setProps({ multiple: true });
