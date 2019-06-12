@@ -2,12 +2,18 @@ import React, { useMemo, useState, useEffect, useCallback } from "react";
 import * as _ from "./math.js";
 
 /* react-selectlist.jsx*/
+RcSelect.defaultProps = {
+  data: [],
+  disabled: [],
+  orientation: "horizontal",
+  multiple: true
+};
 function RcSelect(props) {
   const { className, style } = props;
-  const { disabled = [], multiple = true, orientation = "horizontal" } = props;
+  const { disabled, multiple, orientation } = props;
   const { textField = "label", valueField = "value" } = props;
   const [id] = useState(() => _.radomString());
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(props.data);
   const { onChange = () => {} } = props;
 
   const handleChange = useCallback(
@@ -62,11 +68,12 @@ function RcSelect(props) {
     let style = orientation === "horizontal" ? { display: "inline-block" } : { display: "block" };
     style = { ...props.style, ...style };
     const row = data.map((item, index) => {
+      let checked = item["checked"] || false;
       return (
         <span key={index} style={style}>
           <input
             id={`${id}_${index}`}
-            checked={item["checked"]}
+            checked={checked}
             name={`${id}_${index}`}
             type={selectType}
             onChange={handleChange.bind(this, index)}
