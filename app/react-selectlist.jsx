@@ -65,12 +65,11 @@ function RcSelect(props) {
 
   const _createBox = useMemo(() => {
     const selectType = multiple ? "checkbox" : "radio";
-    let style = orientation === "horizontal" ? { display: "inline-block" } : { display: "block" };
-    style = { ...props.style, ...style };
+    const style = orientation === "horizontal" ? { display: "inline-block" } : { display: "block" };
     const row = data.map((item, index) => {
       let checked = item["checked"] || false;
       return (
-        <span key={index} style={style}>
+        <span key={index} style={{ ...props.style, ...style }}>
           <input
             id={`${id}_${index}`}
             checked={checked}
