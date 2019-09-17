@@ -14,9 +14,10 @@ React component used for selecting multiple values or single statess from severa
 npm i --save react-selectlist
 ```
 
-## demo
+## Demo
 
-[Live demo](https://skycloud1030.github.io/react-selectlist/html/checkbox.html)
+- [preview](https://skycloud1030.github.io/react-selectlist/html/checkbox.html)
+- [code](https://github.com/skycloud1030/react-selectlist/blob/gh-pages/app/checkbox.jsx)
 
 ## props
 
